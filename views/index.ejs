@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header><h1><%=title %></h1></header>
+    <ul>
+      <% messages.forEach((message) => { %> <%- include('messages/message',
+      {message: message.text, user: message.user, added: message.added}); %> <%
+      }); %>
+    </ul>
+  </body>
+</html>
