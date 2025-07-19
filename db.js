@@ -27,8 +27,17 @@ async function getMessageById(messageId) {
   return messages.find((message) => message.id === messageId);
 }
 
+async function getMessageCount() {
+  return messages.length;
+}
+
 async function createMessage(message) {
   messages.push(message);
 }
 
-module.exports = { getAllMessages, getMessageById, createMessage };
+module.exports = {
+  getAllMessages,
+  getMessageById,
+  getMessageCount,
+  createMessage,
+};
