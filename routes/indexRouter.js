@@ -24,6 +24,10 @@ indexRouter.get('/', (req, res) => {
   res.render('index', { title: 'Mini Messageboard', messages: messages });
 });
 
+indexRouter.get('/new', (req, res) => {
+  res.render('form', { title: 'New Message' });
+});
+
 indexRouter.post('/new', (req, res) => {
   res.send('Message created');
 });
