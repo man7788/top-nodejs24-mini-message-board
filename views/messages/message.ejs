@@ -1,3 +1,11 @@
-<li><%= message %></li>
-<li>User: <%= user %></li>
-<li>Date: <%= added %></li>
+<link rel="stylesheet" href="/styles.css" />
+<div class="message-container">
+  <li><%= message %></li>
+  <li>User: <%= user %></li>
+  <li>Date: <%= added %></li>
+  <% if(newPage) { %>
+  <a href="/">Back to home</a>
+  <% } else { %>
+  <a href="messages/message/<%= id %>">Open in new page</a>
+  <% } %>
+</div>
