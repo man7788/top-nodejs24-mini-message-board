@@ -21,7 +21,7 @@ const messages = [
 ];
 
 indexRouter.get('/', (req, res) => {
-  res.send('Home');
+  res.render('index', { title: 'Mini Messageboard', messages: messages });
 });
 
 indexRouter.post('/new', (req, res) => {
