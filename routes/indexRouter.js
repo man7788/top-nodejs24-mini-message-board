@@ -1,26 +1,10 @@
 const { Router } = require('express');
+const db = require('../db.js');
 
 const indexRouter = Router();
 
-const messages = [
-  {
-    text: 'Hi there!',
-    user: 'Amando',
-    added: new Date(),
-  },
-  {
-    text: 'Hello World!',
-    user: 'Charles',
-    added: new Date(),
-  },
-  {
-    text: "What's up?",
-    user: 'David',
-    added: new Date(),
-  },
-];
-
-indexRouter.get('/', (req, res) => {
+indexRouter.get('/', async (req, res) => {
+  const messages = await db.getAllMessages();
   res.render('index', { title: 'Mini Messageboard', messages: messages });
 });
 
@@ -28,8 +12,8 @@ indexRouter.get('/new', (req, res) => {
   res.render('form', { title: 'New Message' });
 });
 
-indexRouter.post('/new', (req, res) => {
-  messages.push({
+indexRouter.post('/new', async (req, res) => {
+  await db.createMessage({
     text: req.body.text,
     user: req.body.name,
     added: new Date(),
