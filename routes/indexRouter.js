@@ -13,7 +13,9 @@ indexRouter.get('/new', (req, res) => {
 });
 
 indexRouter.post('/new', async (req, res) => {
+  const count = await db.getMessageCount();
   await db.createMessage({
+    id: count + 1,
     text: req.body.text,
     user: req.body.name,
     added: new Date(),
