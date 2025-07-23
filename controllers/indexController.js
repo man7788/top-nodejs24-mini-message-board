@@ -1,8 +1,7 @@
-const db = require('../db');
+const db = require('../db/queries');
 
 async function getAllMessages(req, res) {
   const messages = await db.getAllMessages();
-
   res.render('index', { title: 'Mini Messageboard', messages: messages });
 }
 
@@ -11,11 +10,9 @@ async function getMessageForm(req, res) {
 }
 
 async function createMessage(req, res) {
-  const count = await db.getMessageCount();
   await db.createMessage({
-    id: count + 1,
-    text: req.body.text,
-    user: req.body.name,
+    message: req.body.text,
+    name: req.body.name,
     added: new Date(),
   });
   res.redirect('/');
