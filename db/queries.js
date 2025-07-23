@@ -5,9 +5,14 @@ async function getAllMessages() {
   return rows;
 }
 
-// async function getMessageById(messageId) {
-//   return messages.find((message) => message.id === messageId);
-// }
+async function getMessageById(messageId) {
+  const query = {
+    text: 'SELECT * FROM messages WHERE id = ($1) LIMIT 1;',
+    values: [messageId],
+  };
+  const { rows } = await pool.query(query);
+  return rows;
+}
 
 async function createMessage(message) {
   const query = {
@@ -19,5 +24,6 @@ async function createMessage(message) {
 
 module.exports = {
   getAllMessages,
+  getMessageById,
   createMessage,
 };
