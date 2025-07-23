@@ -6,7 +6,7 @@
     <header><h1><%=title %></h1></header>
     <ul>
       <% messages.forEach((message) => { %> <%- include('messages/message',
-      {message: message.text, user: message.user, added: message.added, id:
+      {message: message.message, user: message.author, added: message.added, id:
       message.id, newPage: false}); %> <% }); %>
     </ul>
     <a href="/new">New Message</a>
